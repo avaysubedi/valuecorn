@@ -1,0 +1,31 @@
+<div class="container vh-100 d-flex justify-content-center align-items-center bg-light">
+  <div class="card shadow p-4" style="min-width: 360px; max-width: 420px; width: 100%;">
+    <div class="text-center mb-4">
+      <img src="../../assets/logo.png" alt="Valuecorn Logo" width="80" class="mb-2" />
+      <h4 class="fw-bold">Welcome to Valuecorn</h4>
+      <small class="text-muted">Business Valuation Simplified</small>
+    </div>
+
+    <form (ngSubmit)="onLogin()" autocomplete="off">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input [(ngModel)]="email" name="email" type="email" class="form-control" required placeholder="you@domain.com" />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input [(ngModel)]="password" name="password" type="password" class="form-control" required placeholder="••••••••" />
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">Log In</button>
+
+      <div *ngIf="error" class="alert alert-danger mt-3 py-2 px-3" role="alert">
+        {{ error }}
+      </div>
+    </form>
+
+    <div class="text-center mt-3">
+      <small>Don’t have an account? <a routerLink="/register">Register</a></small>
+    </div>
+  </div>
+</div>

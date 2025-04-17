@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 shadow-sm">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img src="assets/logo.png" alt="Logo" width="40" height="40" class="me-2" />
+      <span class="fw-bold fs-4">Valuecorn</span>
+    </a>
+  
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="!authState.isLoggedIn()">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!authState.isLoggedIn()">
+          <a class="nav-link" [routerLink]="'/register'">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="authState.isLoggedIn()">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
+        <li class="nav-item" *ngIf="authState.isLoggedIn()">
+          <a class="nav-link text-danger" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

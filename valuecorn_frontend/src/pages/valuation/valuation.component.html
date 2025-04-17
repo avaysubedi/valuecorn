@@ -1,0 +1,93 @@
+<div class="container mt-4">
+    <h2>Valuation Input</h2>
+  
+    <form [formGroup]="valuationForm" (ngSubmit)="submitValuation()">
+      <!-- Company Info -->
+      <div class="row mb-3">
+        <div class="col">
+          <label for="companyCode" class="form-label">Company Code</label>
+          <input formControlName="companyCode" class="form-control" id="companyCode" required />
+        </div>
+        <div class="col">
+          <label for="country" class="form-label">Country</label>
+          <select formControlName="country" class="form-select">
+            <option value="UAE">UAE</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Qatar">Qatar</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+          </select>
+        </div>
+      </div>
+  
+      <!-- Financial Settings -->
+      <div class="row mb-3">
+        <div class="col">
+          <label class="form-label">Discount Rate (%)</label>
+          <input formControlName="discountRate" type="number" class="form-control" />
+        </div>
+        <div class="col">
+          <label class="form-label">Tax Rate (%)</label>
+          <input formControlName="taxRate" type="number" class="form-control" />
+        </div>
+        <div class="col">
+          <label class="form-label">Actual Years</label>
+          <input formControlName="actualYears" type="number" class="form-control" />
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <button type="button" class="btn btn-secondary" (click)="generateYears()">Generate Year Inputs</button>
+      </div>
+  
+      <!-- Yearly Inputs -->
+      <div formArrayName="years">
+        <div
+          class="card mb-3"
+          *ngFor="let year of yearsArray.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="card-body">
+            <h5 class="card-title">Year {{ year.get('year')?.value }}</h5>
+            <div class="row g-2">
+              <div class="col-md-3">
+                <label>Revenues</label>
+                <input formControlName="revenues" type="number" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>COGS</label>
+                <input formControlName="cogs" type="number" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>Employee Expense</label>
+                <input formControlName="employeeExpense" type="number" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>SGA Expense</label>
+                <input formControlName="sgaExpense" type="number" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>Depreciation</label>
+                <input formControlName="depreciation" type="number" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>Interest Expense</label>
+                <input formControlName="interestExpense" type="number" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label>Other Income</label>
+                <input formControlName="otherIncome" type="number" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="mt-3">
+        <button class="btn btn-primary" type="submit" [disabled]="valuationForm.invalid">
+          Submit Valuation
+        </button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,38 @@
+<div class="register-container">
+  <h2>Create an Account</h2>
+
+  <form (ngSubmit)="onRegister(registerForm)" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" required />
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" required />
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" [(ngModel)]="user.username" required />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" [(ngModel)]="user.phoneNumber" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password" required />
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </form>
+</div>
