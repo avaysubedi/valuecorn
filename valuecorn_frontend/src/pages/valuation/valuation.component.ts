@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
+import {environment} from '../../environments/environment'
 @Component({
   selector: 'app-valuation',
   templateUrl: './valuation.component.html',
@@ -69,7 +69,7 @@ export class ValuationComponent {
       years: form.years
     };
 
-    this.http.post('http://localhost:5000/api/valuations', payload).subscribe({
+    this.http.post(`${environment.apiBaseUrl}/valuations`, payload).subscribe({
       next: (res) => console.log('Valuation success', res),
       error: (err) => console.error('Valuation error', err)
     });

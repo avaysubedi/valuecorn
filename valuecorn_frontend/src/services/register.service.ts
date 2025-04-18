@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserRegisterPayload } from '../app/models/register-payload';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  private apiUrl = 'http://localhost:5000/api/register';
+  private apiUrl = `${environment.apiBaseUrl}/register`;
 
   constructor(private http: HttpClient) {}
 
