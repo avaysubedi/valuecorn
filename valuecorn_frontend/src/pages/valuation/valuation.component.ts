@@ -19,7 +19,8 @@ export class ValuationComponent {
       discountRate: [8, Validators.required],
       taxRate: [20, Validators.required],
       actualYears: [2, Validators.required],
-      years: this.fb.array([])
+      years: this.fb.array([]),
+      projectedyears:[2,Validators.required]
     });
 
     this.yearsArray = this.valuationForm.get('years') as FormArray;
@@ -28,8 +29,10 @@ export class ValuationComponent {
   generateYears() {
     this.yearsArray.clear();
     const actualYears = this.valuationForm.value.actualYears;
-    let startYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear();
 
+    const startYear = currentYear - actualYears + 1; // Start from past
+  
     for (let i = 0; i < actualYears; i++) {
       this.yearsArray.push(this.fb.group({
         year: [startYear + i],

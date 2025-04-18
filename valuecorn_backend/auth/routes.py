@@ -9,7 +9,7 @@ auth_bp = Blueprint('auth', __name__)
 def get_db():
     return pyodbc.connect(
         'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=LAPTOP-E5EKBDRG;'
+        'SERVER=localhost\sql19;'
         'DATABASE=Valuecorn;'
         'UID=sa;PWD=P@ssw0rd'
     )
@@ -66,11 +66,14 @@ def login():
             return jsonify({"error": "Invalid credentials"}), 401
 
         # Generate JWT token
-        access_token = create_access_token(identity={
-            "id": user[0],
-            "email": email,
-            "role": user[2]
-        }, expires_delta=timedelta(days=7))
+        access_token = create_access_token(
+        identity=str(user[0]),  # <-- string user ID (becomes `sub`)
+        additional_claims={
+        "email": email,
+        "role": user[2]
+    },
+    expires_delta=timedelta(days=7)
+    )
 
         return jsonify({
             "message": "Login successful",

@@ -3,8 +3,101 @@
       <h2 class="mb-3">Welcome to Your Dashboard</h2>
       <p>You are successfully logged in 🎉</p>
   
-      <div class="d-flex gap-3 mt-4">
-        <button class="btn btn-primary" (click)="goToValuation()">Go to Business Valuation</button>
+      <div class="d-flex gap-3">
+        <button class="btn btn-primary" (click)="goToValuation()">New Valuation</button>
+      </div>
+
+      <h3 class="mb-3">Your Valuations</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm small align-middle text-center">
+          <thead class="table-light">
+            <tr class="small">
+              <th scope="col">Company</th>
+              <th scope="col">Country</th>
+              <th scope="col">Created At</th>
+              <th scope="col">DCF Valuation</th>
+              <th scope="col">Discount Rate</th>
+              <th scope="col">Terminal Value</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="small">
+            <tr *ngFor="let v of valuations">
+              <td>{{ v.CompanyCode }}</td>
+              <td>{{ v.Country }}</td>
+              <td>{{ v.CreatedAt | date: 'yyyy/MM/dd' }}</td>
+              <td>{{ v.DCFValuation | number: '1.0-2' }}</td>
+              <td>{{ v.DiscountRate }}</td>
+              <td>{{ v.DiscountedTerminalValue | number: '1.0-2' }}</td>
+              <td>
+                <button class="btn btn-outline-primary btn-sm" (click)="openValuationDetails(v)">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal modal-lg fade show" style="display: block;" *ngIf="selectedValuation">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Valuation Details</h5>
+              <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+              <!-- <p><strong>Company Code:</strong> {{ selectedValuation.companyCode }}</p>
+              <p><strong>Country:</strong> {{ selectedValuation.country }}</p>
+              <p><strong>DCF Valuation:</strong> {{ selectedValuation.dcfValuation | number:'1.0-2' }}</p>
+              <p><strong>Created:</strong> {{ selectedValuation.createdAt | date }}</p> -->
+              
+              <div class="table-responsive ">
+                <table class="table table-sm small table-striped table-bordered">
+                  <thead class="small" >
+                    <tr>
+                      <th >Year</th>
+                      <th>IsProjected</th>
+                      <th>Revenues</th>
+                      <th>COGS</th>
+                      <th>Employee</th>
+                      <th>SGA</th>
+                      <th>Depreciation</th>
+                      <th>EBITDA</th>
+                      <th>EBIT</th>
+                      <th>NOPAT</th>
+                      <th>FCFF</th>
+                      <th>Disc. FCFF</th>
+                      <th>Interest</th>
+                      <th>Other Income</th>
+                    </tr>
+                  </thead>
+                  <tbody class="small">
+                    <tr *ngFor="let year of selectedValuation">
+                      <td>{{ year.Year }}</td>
+                      <td>{{ year.IsProjected ? 'Yes' : 'No' }}</td>
+                      <td>{{ year.Revenues }}</td>
+                      <td>{{ year.COGS }}</td>
+                      <td>{{ year.EmployeeExpense }}</td>
+                      <td>{{ year.SGAExpense }}</td>
+                      <td>{{ year.Depreciation }}</td>
+                      <td>{{ year.EBITDA }}</td>
+                      <td>{{ year.EBIT }}</td>
+                      <td>{{ year.NOPAT }}</td>
+                      <td>{{ year.FCFF }}</td>
+                      <td>{{ year.DiscountedFCFF }}</td>
+                      <td>{{ year.InterestExpense }}</td>
+                      <td>{{ year.OtherIncome }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <!-- You can add more fields here -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,13 @@
+table th, table td {
+    vertical-align: middle;
+  }
+  
+  .table-responsive {
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  
+  button.btn-sm {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
