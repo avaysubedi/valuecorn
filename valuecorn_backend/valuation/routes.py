@@ -12,7 +12,7 @@ def get_db():
         'UID=sa;PWD=P@ssw0rd'
     )
 @valuations_bp.route('/api/valuations', methods=['POST'])
-# @jwt_required()
+@jwt_required()
 def create_valuation():
     try:
         user_id = 1  # Replace with get_jwt_identity()['id'] when JWT is ready
