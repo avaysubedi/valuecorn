@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-valuation',
   templateUrl: './valuation.component.html',
-  imports:[ReactiveFormsModule,CommonModule]
+  imports:[ReactiveFormsModule,CommonModule ]
 })
 export class ValuationComponent {
   valuationForm: FormGroup;
@@ -66,7 +66,7 @@ export class ValuationComponent {
       years: form.years
     };
 
-    this.http.post('/api/valuations', payload).subscribe({
+    this.http.post('http://localhost:5000/api/valuations', payload).subscribe({
       next: (res) => console.log('Valuation success', res),
       error: (err) => console.error('Valuation error', err)
     });
