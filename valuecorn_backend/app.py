@@ -4,7 +4,7 @@ from flask_jwt_extended import JWTManager
 from auth.routes import auth_bp  # 👈 this is important
 from valuation.routes import valuations_bp
 
-
+from projection.projection_service import projection_bp
 
 
 app = Flask(__name__)
@@ -15,7 +15,7 @@ jwt = JWTManager(app)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(valuations_bp)
-
+app.register_blueprint(projection_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)

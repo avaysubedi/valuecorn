@@ -9,7 +9,7 @@ auth_bp = Blueprint('auth', __name__)
 def get_db():
     return pyodbc.connect(
         'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=localhost\sql19;'
+        'SERVER=LAPTOP-E5EKBDRG;' #LAPTOP-E5EKBDRG #localhost/sql19
         'DATABASE=Valuecorn;'
         'UID=sa;PWD=P@ssw0rd'
     )
