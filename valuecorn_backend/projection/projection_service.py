@@ -1,16 +1,14 @@
 from flask import Blueprint, request, jsonify
 import pyodbc
 from flask_jwt_extended import get_jwt_identity, jwt_required
-
+from db import get_db
 projection_bp = Blueprint('projection', __name__)
 
-def get_db():
-    return pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=LAPTOP-E5EKBDRG;'
-        'DATABASE=valuecorn;'
-        'UID=sa;PWD=P@ssw0rd'
-    )
+
+conn = get_db()
+cursor = conn.cursor()
+# ... your queries
+
 
 @projection_bp.route('/api/projections', methods=['POST'])
 #@jwt_required()
@@ -19,9 +17,7 @@ def create_projection():
         user_id = 1 # int(get_jwt_identity())
         data = request.get_json()
 
-        conn = get_db()
-        cursor = conn.cursor()
-
+    
         # Step 1: Perform Projection Calculation
         projection_years = int(data['projection_years'])
         actual_years = int(data['actual_years'])

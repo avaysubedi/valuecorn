@@ -1,16 +1,15 @@
 from flask import Blueprint, request, jsonify
 import pyodbc
 from flask_jwt_extended import get_jwt, jwt_required, get_jwt_identity
+from db import get_db
+
 
 valuations_bp = Blueprint('valuations', __name__)
+conn = get_db()
+cursor = conn.cursor()
 
-def get_db():
-    return pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=localhost\sql19;'
-        'DATABASE=Valuecorn;'
-        'UID=sa;PWD=P@ssw0rd'
-    )
+
+
 @valuations_bp.route('/api/valuations', methods=['POST'])
 @jwt_required()
 def create_valuation():
