@@ -71,7 +71,7 @@
                     </tr>
                   </thead>
                   <tbody class="small">
-                    <tr *ngFor="let year of selectedValuation">
+                    <tr *ngFor="let year of selectedValuationDetails">
                       <td>{{ year.Year }}</td>
                       <td>{{ year.IsProjected ? 'Yes' : 'No' }}</td>
                       <td>{{ year.Revenues }}</td>
@@ -91,7 +91,6 @@
                 </table>
               </div>
               
-              <!-- You can add more fields here -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
