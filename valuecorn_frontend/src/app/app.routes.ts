@@ -16,6 +16,12 @@ export const routes: Routes = [
             path: 'valuation',
             loadComponent: () => import('../pages/valuation/valuation.component').then(m => m.ValuationComponent),
             canActivate: [AuthGuard]
+          },
+          {
+            path: 'projection',
+            loadComponent: () => import('../pages/projection/projection.component').then(m => m.ProjectionComponent),
+            canActivate: [AuthGuard]
           }
+     
           
 ];

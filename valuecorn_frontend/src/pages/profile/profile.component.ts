@@ -26,6 +26,10 @@ export class ProfileComponent {
     this.router.navigate(['/valuation']);
   }
 
+  goToProjection(){
+    this.router.navigate(['/projection']);
+  }
+
   ngOnInit() {
     this.fetchValuations();
   }

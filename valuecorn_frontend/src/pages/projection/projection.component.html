@@ -1,0 +1,72 @@
+<div class="container mt-4">
+    <h3>Create Financial Projection</h3>
+    <form [formGroup]="projectionForm" (ngSubmit)="submit()" class="mt-3">
+  
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label>Company Code</label>
+          <input type="text" class="form-control" formControlName="company_code">
+        </div>
+        <div class="col-md-6">
+          <label>Country</label>
+          <input type="text" class="form-control" formControlName="country">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col">
+          <label>Discount Rate (%)</label>
+          <input type="number" class="form-control" formControlName="discount_rate">
+        </div>
+        <div class="col">
+          <label>Tax Rate (%)</label>
+          <input type="number" class="form-control" formControlName="tax_rate">
+        </div>
+        <div class="col">
+          <label>Terminal Growth Rate (%)</label>
+          <input type="number" class="form-control" formControlName="terminal_growth_rate">
+        </div>
+      </div>
+  
+      <hr>
+  
+      <h5>Growth Rates (%)</h5>
+      <div class="row mb-3" formGroupName="growth_rates">
+        <div class="col-md-4 mb-2" *ngFor="let field of fields">
+          <label>{{ field }}</label>
+          <input type="number" class="form-control" [formControlName]="field">
+        </div>
+      </div>
+  
+      <hr>
+  
+      <h5>Actual Financial Data</h5>
+      <button type="button" class="btn btn-sm btn-outline-primary me-2" (click)="addYear()">+ Add Year</button>
+      <button type="button" class="btn btn-sm btn-outline-danger" (click)="removeYear()">- Remove Year</button>
+  
+      <div class="table-responsive mt-3">
+        <table class="table table-bordered table-sm align-middle text-center">
+          <thead>
+            <tr>
+              <th>Field / Year</th>
+              <th *ngFor="let _ of getDataField('revenues').controls; let i = index">Year {{ i + 1 }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let field of fields">
+              <td><strong>{{ field }}</strong></td>
+              <td *ngFor="let control of getDataField(field).controls">
+                <input type="number" class="form-control form-control-sm" [formControl]="control">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="text-end mt-4">
+        <button type="submit" class="btn btn-success">Create Projection</button>
+      </div>
+  
+    </form>
+  </div>
+  
