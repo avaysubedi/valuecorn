@@ -34,12 +34,12 @@ export class ProfileComponent {
     this.fetchValuations();
   }
   valuations: any[] = [];
-  selectedValuation: any = null;
-
+  selectedValuation: any = [];
+  selectedValuationDetails: any = [];
   
   fetchValuations() {
     this.valuationService.getAllValuations().subscribe({
-      next: (data) => {this.valuations = data;console.log(this.valuations)},
+      next: (data) => {this.valuations = data},
       error: (err) => console.error('Error fetching valuations', err)
     });
   }
@@ -52,7 +52,7 @@ export class ProfileComponent {
   fetchbyId(valuationid:number){
 this.valuationService.getValuationById(valuationid).subscribe({
 
-  next:(data)=>{this.selectedValuation=data;console.log(this.selectedValuation)},
+  next:(data)=>{this.selectedValuationDetails=data;},
   error:(err)=>console.error('Error fetching valuations', err)
   });
 }

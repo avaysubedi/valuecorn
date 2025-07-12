@@ -3,16 +3,15 @@ import bcrypt
 import pyodbc
 from flask_jwt_extended import create_access_token
 from datetime import timedelta
+from db import get_db
+
 
 auth_bp = Blueprint('auth', __name__)
 
-def get_db():
-    return pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=LAPTOP-E5EKBDRG;' #LAPTOP-E5EKBDRG #localhost/sql19
-        'DATABASE=Valuecorn;'
-        'UID=sa;PWD=P@ssw0rd'
-    )
+conn = get_db()
+cursor = conn.cursor()
+
+
 @auth_bp.route('/api/register', methods=['POST'])
 def register():
     try:

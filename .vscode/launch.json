@@ -1,0 +1,10 @@
+{
+  "name": "Frontend: Angular on Edge",
+  "type": "pwa-msedge",
+  "request": "launch",
+  "url": "http://localhost:4200",
+  "webRoot": "${workspaceFolder:valuecorn_frontend}/src",
+  "sourceMaps": true,
+  "trace": true,
+  "preLaunchTask": "ng serve"
+}

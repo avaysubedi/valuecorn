@@ -1,0 +1,17 @@
+{
+	"folders": [
+			 {
+    "path": "valuecorn_backend",
+    "name": "valuecorn_backend"
+  },
+  		 {
+    "path": "db_queries",
+    "name": "db_queries"
+  },
+  {
+    "path": "valuecorn_frontend",
+    "name": "valuecorn_frontend"
+  }
+	],
+	"settings": {}
+}
