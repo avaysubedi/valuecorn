@@ -3,7 +3,7 @@ import bcrypt
 import pyodbc
 from flask_jwt_extended import create_access_token
 from datetime import timedelta
-from db import get_db
+from ..db import get_db
 
 
 auth_bp = Blueprint('auth', __name__)
