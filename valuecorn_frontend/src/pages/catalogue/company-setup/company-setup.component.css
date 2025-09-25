@@ -1,0 +1,20 @@
+.company-form-card {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.company-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.button-row {
+  grid-column: span 2;
+  text-align: right;
+}

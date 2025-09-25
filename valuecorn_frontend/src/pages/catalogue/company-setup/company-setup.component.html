@@ -1,0 +1,83 @@
+<mat-card class="company-form-card">
+  <h2>Company Setup</h2>
+  <form class="company-form">
+
+    <!-- Company Name -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Company Name</mat-label>
+      <input matInput [(ngModel)]="company.companyName" name="companyName">
+    </mat-form-field>
+
+    <!-- Company Code -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Company Code</mat-label>
+      <input matInput [(ngModel)]="company.companyCode" name="companyCode">
+    </mat-form-field>
+
+    <!-- Country -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Country</mat-label>
+      <mat-select [(ngModel)]="company.CountryCode" name="countryCode">
+        <mat-option *ngFor="let c of countries" [value]="c.CountryCode">
+          {{ c.CountryName }} 
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Industry -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Industry</mat-label>
+      <mat-select [(ngModel)]="company.IndustryCode" name="industryCode">
+        <mat-option *ngFor="let i of industries" [value]="i.IndustryCode">
+          {{ i.IndustryName }} 
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Currency -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Currency</mat-label>
+      <input matInput [(ngModel)]="company.currency" name="currency">
+    </mat-form-field>
+
+    <!-- Fiscal Year End -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Fiscal Year End (Month)</mat-label>
+      <input matInput type="number" [(ngModel)]="company.fiscalYearEnd" name="fiscalYearEnd" min="1" max="12">
+    </mat-form-field>
+
+    <!-- Shares Outstanding -->
+    <!-- <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Shares Outstanding</mat-label>
+      <input matInput type="number" [(ngModel)]="company.sharesOutstanding" name="sharesOutstanding">
+    </mat-form-field> -->
+
+    <!-- Net Debt -->
+    <!-- <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Net Debt</mat-label>
+      <input matInput type="number" [(ngModel)]="company.netDebt" name="netDebt">
+    </mat-form-field> -->
+
+    <!-- Cash Balance -->
+    <!-- <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Cash Balance</mat-label>
+      <input matInput type="number" [(ngModel)]="company.cashBalance" name="cashBalance">
+    </mat-form-field> -->
+
+    <!-- Synthetic Rating -->
+    <!-- <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Synthetic Rating</mat-label>
+      <mat-select [(ngModel)]="company.ratingCode" name="ratingCode">
+        <mat-option *ngFor="let r of ratings" [value]="r.RatingCode">
+          {{ r.RatingCode }} (Spread: {{ r.DefaultSpread }}%)
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <!-- Save Button -->
+    <div class="button-row">
+      <button mat-raised-button color="primary" (click)="saveCompany()">Save & Next</button>
+    </div>
+
+  </form>
+</mat-card>
