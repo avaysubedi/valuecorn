@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
-from .auth.routes import auth_bp  # 👈 this is important
+from auth.routes import auth_bp  # 👈 this is important
 from valuation.routes import valuations_bp
 
 from projection.projection_service import projection_bp
