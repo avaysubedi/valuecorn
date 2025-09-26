@@ -11,6 +11,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';  // ✅ add this
 
 
   export const MATERIAL_IMPORTS = [
@@ -25,5 +28,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
    MatTableModule,
     MatIconModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
 ];

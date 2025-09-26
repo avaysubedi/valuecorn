@@ -1,20 +1,28 @@
-.company-form-card {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
+.company-stepper {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-.company-form {
+.form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.form-field {
+.form-grid mat-form-field {
   width: 100%;
 }
 
-.button-row {
-  grid-column: span 2;
+.step-actions {
+  margin-top: 24px;
   text-align: right;
+}
+
+.review-card {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
