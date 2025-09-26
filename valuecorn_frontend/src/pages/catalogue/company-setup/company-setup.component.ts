@@ -21,7 +21,9 @@ export class CompanySetupComponent implements OnInit {
   basicInfoForm: FormGroup;
   companyId?: number;
   
-  constructor(private lookupService: LookupService,private fb: FormBuilder, private companyService: CompanyService) {
+  constructor(private lookupService: LookupService,private fb: FormBuilder,
+     private companyService: CompanyService,
+    ) {
   this.basicInfoForm = this.fb.group({
       companyCode: ['', Validators.required],
       companyName: ['', Validators.required],
