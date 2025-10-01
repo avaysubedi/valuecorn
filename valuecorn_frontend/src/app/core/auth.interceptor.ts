@@ -32,7 +32,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
         if (error.error?.message) {
           message = error.error.message;  // API-provided error
         } else if (error.status === 0) {
-          message = 'Cannot connect to server';
+          message = 'Unable to connect to server';
         } else {
           message = `Error ${error.status}: ${error.statusText}`;
         }

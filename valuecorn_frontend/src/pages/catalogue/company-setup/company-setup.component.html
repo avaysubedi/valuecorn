@@ -1,17 +1,19 @@
-<mat-vertical-stepper class="company-stepper" [linear]="true">
+<mat-horizontal-stepper class="company-stepper" [linear]="false">
   
   <!-- Step 1: Basic Company Info -->
   <mat-step [stepControl]="basicInfoForm" label="Basic Info">
-    <form [formGroup]="basicInfoForm" class="form-grid">
+    <form [formGroup]="basicInfoForm" class="form-grid mt-2">
 
-      <mat-form-field appearance="outline">
-        <mat-label>Company Code</mat-label>
-        <input matInput formControlName="companyCode" placeholder="Unique code">
-      </mat-form-field>
+      
 
       <mat-form-field appearance="outline">
         <mat-label>Company Name</mat-label>
         <input matInput formControlName="companyName" placeholder="Registered legal name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Company Code</mat-label>
+        <input matInput formControlName="companyCode" placeholder="Unique code">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -83,9 +85,288 @@
     </form>
 
     <div class="step-actions">
-      <button mat-raised-button color="primary" (click)="saveBasicInfo()">Save & Continue</button>
+      <button mat-raised-button color="primary" (click)="saveBasicInfo()">Next:&nbsp;Address</button>
     </div>
   </mat-step>
+    
+  <!-- Step 1: Address Info -->
+<!-- Step 2: Addresses -->
+<mat-step [stepControl]="addressFormGroup" label="Addresses">
+  <form [formGroup]="addressFormGroup">
+
+    <!-- Registered Address -->
+    <h4 class="section-header">Registered Address</h4>
+    <div formGroupName="registered" class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Address Line</mat-label>
+        <input matInput formControlName="addressLine">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Postal Code</mat-label>
+        <input matInput formControlName="postalCode">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>P.O. Box</mat-label>
+        <input matInput formControlName="poBox">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="countryCode">
+          <mat-option *ngFor="let c of countries" [value]="c.CountryCode">
+            {{ c.CountryName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Checkbox -->
+    <mat-checkbox formControlName="sameAsRegistered" (change)="toggleSameAsRegistered()">
+      Same as Registered Address
+    </mat-checkbox>
+
+    <!-- Operational Address -->
+    <h4 class="section-header">Operational Address</h4>
+    <div formGroupName="operational" class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Address Line</mat-label>
+        <input matInput formControlName="addressLine">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Postal Code</mat-label>
+        <input matInput formControlName="postalCode">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>P.O. Box</mat-label>
+        <input matInput formControlName="poBox">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="countryCode">
+          <mat-option *ngFor="let c of countries" [value]="c.CountryCode">
+            {{ c.CountryName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="step-actions">
+      <button mat-raised-button color="primary" (click)="saveAddresses()">Save & Continue</button>
+    </div>
+  </form>
+</mat-step>
+
+<!-- FINANCIAL INFO  -->
+<mat-step [stepControl]="financialTaxForm" label="Financial & Tax Information">
+  <form [formGroup]="financialTaxForm" class="mt-2 financial-tax-form">
+
+    <!-- Wrap both groups in flex row -->
+    <div class="form-groups-row">
+
+      <!-- Financials -->
+      <div class="form-group-box" formGroupName="financials">
+        <h4 class="section-header">Financial Information</h4>
+        <div class="form-inline">
+          <mat-form-field appearance="outline">
+            <mat-label>Fiscal Year End</mat-label>
+            <mat-select formControlName="fiscalYearEnd">
+              <mat-option *ngFor="let m of months" [value]="m.value">{{ m.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Accounting Standards</mat-label>
+            <input matInput formControlName="accountingStandards" placeholder="IFRS / GAAP" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>External Auditor</mat-label>
+            <input matInput formControlName="externalAuditor" placeholder="Auditor Name" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Tax -->
+      <div class="form-group-box" formGroupName="tax">
+        <h4 class="section-header">Tax Information</h4>
+        <div class="form-inline">
+          <mat-form-field appearance="outline">
+            <mat-label>VAT Registration No</mat-label>
+            <input matInput formControlName="vatRegNo" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>VAT Date</mat-label>
+            <input matInput [matDatepicker]="vatDatePicker" formControlName="vatDate">
+            <mat-datepicker-toggle matSuffix [for]="vatDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #vatDatePicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Corporate Tax Reg No</mat-label>
+            <input matInput formControlName="corporateTaxRegNo" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Corporate Tax Date</mat-label>
+            <input matInput [matDatepicker]="corpTaxDatePicker" formControlName="corporateTaxDate">
+            <mat-datepicker-toggle matSuffix [for]="corpTaxDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #corpTaxDatePicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Free Zone Benefit</mat-label>
+            <input matInput formControlName="freeZoneBenefit" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Exemptions</mat-label>
+            <textarea matInput formControlName="exemptions"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+ 
+    <!-- Step Actions -->
+    
+   <div class="step-actions">
+      <button mat-raised-button color="primary" (click)="saveFinancialTax()">Save & Continue</button>
+    </div>
+    
+  </form>
+</mat-step>
+
+<!-- SHAREHOLDERS -->
+<mat-step [stepControl]="shareholdersForm" label="Shareholders">
+  <form [formGroup]="shareholdersForm">
+    <div formArrayName="rows">
+      <table mat-table [dataSource]="shareholdersData" class="full-width-table ">
+
+        <!-- Name -->
+        <ng-container matColumnDef="shareholderName" >
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="shareholderName">
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Nationality -->
+        <ng-container matColumnDef="nationality">
+          <th mat-header-cell *matHeaderCellDef> Nationality </th>
+          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="nationality">
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Type -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type </th>
+          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+            <mat-select formControlName="type">
+              <mat-option value="Individual">Individual</mat-option>
+              <mat-option value="Corporate">Corporate</mat-option>
+            </mat-select>
+          </td>
+        </ng-container>
+
+        <!-- Percentage -->
+        <ng-container matColumnDef="percentage">
+          <th mat-header-cell *matHeaderCellDef> % </th>
+          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="outline">
+              <input matInput type="number" formControlName="percentage">
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- UBO -->
+        <ng-container matColumnDef="isUbo">
+          <th mat-header-cell *matHeaderCellDef> Is UBO? </th>
+          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+            <mat-checkbox formControlName="isUbo"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- UBO ID -->
+        <ng-container matColumnDef="uboId">
+          <th mat-header-cell *matHeaderCellDef> UBO Id </th>
+          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="uboId">
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Actions -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let row; let i = index">
+            <button mat-icon-button color="primary" (click)="saveRow(i)">
+              <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteRow(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns" class="mt-3"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;" ></tr>
+      </table>
+    </div>
+
+    <div class="step-actions">
+      <button mat-raised-button color="accent" type="button" (click)="addRow()">+ Add Row</button>
+      <button mat-raised-button color="primary" type="button" (click)="commitShareholders()">Save & Continue</button>
+    </div>
+  </form>
+</mat-step>
+
+
+
+
+
+
 
   <!-- Step 2: Review -->
   <mat-step label="Review">
@@ -110,4 +391,4 @@
       <button mat-raised-button color="accent" (click)="saveBasicInfo()">Finish Setup</button>
     </div>
   </mat-step>
-</mat-vertical-stepper>
+</mat-horizontal-stepper>
