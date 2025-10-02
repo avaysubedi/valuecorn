@@ -21,5 +21,11 @@ export const routes: Routes = [
         loadComponent: () => import('../pages/projection/projection.component').then(m => m.ProjectionComponent),
         canActivate: [AuthGuard]
         },
-          
+         {path: 'register',
+        loadComponent: () => import('../pages/register/register.component').then(m => m.RegisterComponent)
+        },
+         {path: 'companysetup',
+        loadComponent: () => import('../pages/catalogue/company-setup/company-setup.component').then(m => m.CompanySetupComponent)
+        },
+            
 ];

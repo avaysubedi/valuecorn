@@ -5,13 +5,15 @@ import { UserRegisterPayload } from '../../app/models/register-payload';
 import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MATERIAL_IMPORTS } from '../../app/material.imports';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],  // ✅ Add this line
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule,MATERIAL_IMPORTS]
 })
 export class RegisterComponent {
   user: UserRegisterPayload = {

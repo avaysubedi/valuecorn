@@ -1,4 +1,10 @@
 <app-navbar></app-navbar>
+<!-- app.component.html -->
+<div class="loading-overlay" *ngIf="loading$ | async">
+  <img src="assets/logo.png" alt="Loading..." class="loading-logo">
+  <p class="loading-text">Loading...</p>
+</div>
 
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
+
   

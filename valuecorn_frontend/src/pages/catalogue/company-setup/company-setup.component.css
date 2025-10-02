@@ -1,0 +1,159 @@
+.company-stepper {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-grid mat-form-field {
+  width: 100%;
+}
+
+.step-actions {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.review-card {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+
+.address-stepper {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-header {
+  grid-column: 1 / -1;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 0 8px;
+}
+
+
+
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.form-inline mat-form-field {
+  flex: 1 1 250px; /* each field takes min 250px, grows if space */
+}
+
+.form-groups-row {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.form-group-box {
+  flex: 1;
+  min-width: 40vw;
+}
+
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-inline mat-form-field {
+  flex: 1 1 calc(50% - 16px); /* two per row */
+  min-width: 250px;
+}
+
+/* Step actions always below, aligned right */
+.step-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Extra safeguard: force full width row break */
+.step-actions.full-width {
+  flex-basis: 100%;
+}
+
+/* kill the grid for this specific form so actions sit below everything */
+.financial-tax-form { display: block; }
+
+/* keep button aligned right */
+.financial-tax-form .step-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Compact Material table */
+.full-width-table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+mat-header-cell, mat-cell {
+  padding: 8px 12px;
+  vertical-align: middle;
+}
+
+mat-form-field {
+  margin: 0;
+  padding: 0;
+}
+
+mat-form-field .mat-mdc-text-field-wrapper {
+  padding: 0 8px;
+  min-height: 40px; /* compact row height */
+}
+
+/* Align checkbox neatly */
+mat-checkbox {
+  margin-left: 8px;
+}
+
+/* Table header style */
+mat-header-cell {
+  font-weight: 600;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Zebra striping rows */
+mat-row:nth-child(even) {
+  background: #fafafa;
+}
+
+mat-row:nth-child(odd) {
+  background: #fff;
+}
+
+/* Action buttons */
+mat-icon {
+  font-size: 20px;
+}
+
+mat-icon-button {
+  margin: 0 4px;
+}
+

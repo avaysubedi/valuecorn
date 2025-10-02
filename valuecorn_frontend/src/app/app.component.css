@@ -1,0 +1,40 @@
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loading-logo {
+  width: 80px;
+  height: 80px;
+animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-text {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #2e7d32; /* nice green tone */
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Option A: Spin */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Option B: Pulse */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}

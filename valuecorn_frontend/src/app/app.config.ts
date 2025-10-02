@@ -4,13 +4,13 @@ import { routes } from './app.routes';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(FormsModule, CommonModule, HttpClientModule),
+    importProvidersFrom(FormsModule, CommonModule,HttpClientModule),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
