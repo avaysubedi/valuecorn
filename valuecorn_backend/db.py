@@ -6,7 +6,7 @@ def get_db():
     try:
         conn = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server};'
-            'SERVER=localhost\sql19;'
+            'SERVER=LAPTOP-E5EKBDRG;'
             'DATABASE=Valuecorn;'
             'UID=sa;PWD=P@ssw0rd'
         )

@@ -17,18 +17,9 @@ export const routes: Routes = [
             loadComponent: () => import('../pages/valuation/valuation.component').then(m => m.ValuationComponent),
             canActivate: [AuthGuard]
           },
-<<<<<<< HEAD
-          {
-            path: 'projection',
-            loadComponent: () => import('../pages/projection/projection.component').then(m => m.ProjectionComponent),
-            canActivate: [AuthGuard]
-          }
-     
-=======
            {path: 'projection',
         loadComponent: () => import('../pages/projection/projection.component').then(m => m.ProjectionComponent),
         canActivate: [AuthGuard]
         },
->>>>>>> 13540083043e99db3045834e69438019feb85bbf
           
 ];
